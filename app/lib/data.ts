@@ -161,7 +161,7 @@ export async function fetchInvoiceById(id: string) {
       // Convert amount from cents to dollars
       amount: invoice.amount / 100,
     }));
-
+    console.log(invoice)
     return invoice[0];
   } catch (error) {
     console.error('Database Error:', error);
@@ -221,6 +221,7 @@ export async function fetchFilteredCustomers(query: string) {
 }
 
 export async function getUser(email: string) {
+  throw new Error('Failed to Delete Invoice');
   try {
     const user = await sql`SELECT * FROM users WHERE email=${email}`;
     return user.rows[0] as User;
